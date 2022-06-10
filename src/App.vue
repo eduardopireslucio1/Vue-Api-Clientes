@@ -37,8 +37,7 @@
             <td>{{cliente.documento}}</td>
             <td>{{cliente.nome}}</td>
             <td>
-              <button class="waves-effect btn-small blue darken-1"><i class="material-icons">create</i></button>
-              <button class="waves-effect btn-small red darken-1"><i class="material-icons">delete_sweep</i></button>
+              <button @click="deletar(cliente)" class="waves-effect btn-small red darken-1"><i class="material-icons">delete_sweep</i></button>
             </td>
 
           </tr>
@@ -81,7 +80,16 @@ export default {
         alert('Cliente salvo com sucesso!')
       })
 
+    },
+
+    deletar(cliente){
+      Cliente.deletar(cliente).then(response => {
+        this.listar()
+        var error = response.data.errors
+        console.log(error)
+      })
     }
+
   }
 
 }

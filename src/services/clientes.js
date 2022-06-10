@@ -7,5 +7,9 @@ export default {
 
     salvar:(cliente) => {
         return http.post('cliente', cliente)
+    },
+
+    deletar:(cliente) => {
+        return http.delete('cliente', { data: cliente})
     }
 }
